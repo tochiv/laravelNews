@@ -15,4 +15,14 @@ class Post extends Model
         'text',
         'publication_date',
     ];
+
+    public function user()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function comments()
+    {
+        $this->hasMany(Comment::class);
+    }
 }

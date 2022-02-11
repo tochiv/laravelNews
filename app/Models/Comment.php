@@ -14,4 +14,14 @@ class Comment extends Model
         'text',
         'publication_date'
     ];
+
+    public function user()
+    {
+        $this->belongsTo(User::class);
+    }
+
+    public function post()
+    {
+        $this->belongsTo(Post::class);
+    }
 }
