@@ -19,6 +19,6 @@ Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\User\HomeController::class, 'index'])->name('home');
 
-Route::get('/editor', [\App\Http\Controllers\EditorController::class, 'index'])->name('editor');
+Route::resource('editor', \App\Http\Controllers\EditorController::class);
 
 Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin');

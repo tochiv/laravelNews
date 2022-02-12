@@ -12,7 +12,7 @@ class Post extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'editor_id',
+        'user_id',
         'title',
         'text',
         'publication_date',
