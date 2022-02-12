@@ -16,6 +16,7 @@ class Post extends Model
         'title',
         'text',
         'publication_date',
+        'approve'
     ];
 
     public function user()

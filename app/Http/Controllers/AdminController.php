@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
+use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -14,10 +17,25 @@ class AdminController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return Renderable
      */
     public function index()
     {
-        return view('admin.index');
+        $user = Auth::user();
+
+        return view('admin.index', [
+            'user' => $user
+        ]);
+    }
+
+    public function approve(int $id)
+    {
+        $post = Post::find($id);
+
+        $post->update([
+            'approve' => 2
+        ]);
+
+        return redirect()->route('admin');
     }
 }

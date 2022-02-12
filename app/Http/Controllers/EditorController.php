@@ -51,7 +51,8 @@ class EditorController extends Controller
             'title' => $request['title'],
             'text' => $request['text'],
             'publication_date' => now(),
-            'user_id' => auth()->id()
+            'user_id' => auth()->id(),
+            'approve' => 0
         ]);
 
         return redirect()->route('editor.index');
@@ -114,6 +115,17 @@ class EditorController extends Controller
         $post = Post::find($id);
 
         $post->delete();
+
+        return redirect()->route('editor.index');
+    }
+
+    public function approve(int $id)
+    {
+        $post = Post::find($id);
+
+        $post->update([
+            'approve' => 1
+        ]);
 
         return redirect()->route('editor.index');
     }
