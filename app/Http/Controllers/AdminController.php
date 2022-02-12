@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -12,6 +11,7 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin');
     }
 
     /**
