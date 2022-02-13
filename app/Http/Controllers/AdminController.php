@@ -38,4 +38,15 @@ class AdminController extends Controller
 
         return redirect()->route('admin');
     }
+
+    public function disapprove(int $id)
+    {
+        $post = Post::find($id);
+
+        $post->update([
+            'approve' => 0
+        ]);
+
+        return redirect()->route('admin');
+    }
 }

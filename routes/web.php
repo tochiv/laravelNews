@@ -26,3 +26,5 @@ Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->n
 Route::get('/editor/{id}/approve', [\App\Http\Controllers\EditorController::class, 'approve'])->name('editor.approve');
 
 Route::get('/admin/{id}/approve', [\App\Http\Controllers\AdminController::class, 'approve'])->name('admin.approve');
+
+Route::get('/admin/{id}/disapprove', [\App\Http\Controllers\AdminController::class, 'disapprove'])->name('admin.disapprove');
