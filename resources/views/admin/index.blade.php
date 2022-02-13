@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row vertical-center-row">
-            @foreach($user->posts as $post)
+            @foreach($posts as $post)
                 @if($post->approve == 1)
                 <div class="card" style="width: 40rem; ">
                     <div class="card-body">

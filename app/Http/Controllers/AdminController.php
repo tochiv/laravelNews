@@ -21,10 +21,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
+        $posts = Post::all();
 
         return view('admin.index', [
-            'user' => $user
+            'posts' => $posts
         ]);
     }
 
