@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,10 @@ Route::controller(\App\Http\Controllers\Admin\AdminController::class)->group(fun
 });
 
 Route::controller(\App\Http\Controllers\Comment\CommentController::class)->group(function (){
-    Route::get('/post/{id}/comment', 'index')->name('comment');
+    Route::post('/post/{id}/comment', 'index')->name('comment');
+    Route::post('/post/{id}/comment/create', 'comment')->name('comment.create');
 });
+
+
 
 
