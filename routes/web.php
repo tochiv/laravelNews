@@ -19,12 +19,14 @@ Auth::routes();
 
 Route::get('/home', [\App\Http\Controllers\User\HomeController::class, 'index'])->name('home');
 
-Route::resource('editor', \App\Http\Controllers\EditorController::class);
+Route::resource('editor', \App\Http\Controllers\Editor\EditorController::class);
 
-Route::get('/admin', [\App\Http\Controllers\AdminController::class, 'index'])->name('admin');
+Route::get('/admin', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
 
-Route::get('/editor/{id}/approve', [\App\Http\Controllers\EditorController::class, 'approve'])->name('editor.approve');
+Route::get('/editor/{id}/approve', [\App\Http\Controllers\Editor\EditorController::class, 'approve'])->name('editor.approve');
 
-Route::get('/admin/{id}/approve', [\App\Http\Controllers\AdminController::class, 'approve'])->name('admin.approve');
+Route::get('/admin/{id}/approve', [\App\Http\Controllers\Admin\AdminController::class, 'approve'])->name('admin.approve');
 
-Route::get('/admin/{id}/disapprove', [\App\Http\Controllers\AdminController::class, 'disapprove'])->name('admin.disapprove');
+Route::get('/admin/{id}/disapprove', [\App\Http\Controllers\Admin\AdminController::class, 'disapprove'])->name('admin.disapprove');
+
+Route::delete('/admin/{id}/destroy', [\App\Http\Controllers\Admin\AdminController::class, 'destroy'])->name('admin.destroy');

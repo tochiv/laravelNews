@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Editor;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
@@ -27,7 +28,9 @@ class EditorController extends Controller
     {
         $user = Auth::user();
 
-        return view('editor.index', compact('user'));
+        return view('editor.index', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -57,16 +60,6 @@ class EditorController extends Controller
         ]);
 
         return redirect()->route('editor.index');
-    }
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Application|Factory|View
-     */
-    public function show(int $id)
-    {
-        return view('editor.index');
     }
 
     /**

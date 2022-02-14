@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -48,5 +48,14 @@ class AdminController extends Controller
         ]);
 
         return redirect()->route('admin');
+    }
+
+    public function destroy(int $id)
+    {
+        $post = Post::find($id);
+
+        $post->delete();
+
+        return redirect()->route('home');
     }
 }
