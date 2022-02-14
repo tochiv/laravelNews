@@ -21,14 +21,17 @@ Route::get('/home', [\App\Http\Controllers\User\HomeController::class, 'index'])
 
 Route::resource('editor', \App\Http\Controllers\Editor\EditorController::class);
 
-Route::get('/admin', [\App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admin');
-
 Route::get('/editor/{id}/approve', [\App\Http\Controllers\Editor\EditorController::class, 'approve'])->name('editor.approve');
 
-Route::get('/admin/{id}/approve', [\App\Http\Controllers\Admin\AdminController::class, 'approve'])->name('admin.approve');
+Route::controller(\App\Http\Controllers\Admin\AdminController::class)->group(function (){
+    Route::get('/admin', 'index')->name('admin');
+    Route::get('/admin/{id}/approve', 'approve')->name('admin.approve');
+    Route::get('/admin/{id}/disapprove', 'disapprove')->name('admin.disapprove');
+    Route::delete('/admin/{id}/destroy', 'destroy')->name('admin.destroy');
+});
 
-Route::get('/admin/{id}/disapprove', [\App\Http\Controllers\Admin\AdminController::class, 'disapprove'])->name('admin.disapprove');
+Route::controller(\App\Http\Controllers\Comment\CommentController::class)->group(function (){
+    Route::get('/post/{id}/comment', 'index')->name('comment');
+});
 
-Route::delete('/admin/{id}/destroy', [\App\Http\Controllers\Admin\AdminController::class, 'destroy'])->name('admin.destroy');
 
-Route::get('/post/{id}/comment', [\App\Http\Controllers\Comment\CommentController::class, 'index'])->name('comment');
