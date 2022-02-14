@@ -24,7 +24,17 @@
                 Comment
             </button>
         </form>
+
+        @foreach($comments as $comment)
+        <div class="card mt-4">
+            <div class="card-header">
+                User: {{ $comment->user->name}}
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ $comment->text }}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+        @endforeach
     </div>
-
-
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Comment;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
@@ -15,8 +16,13 @@ class CommentController extends Controller
         $post = Post::query()
         ->find($post);
 
+        $comments = Comment::all();
+
+        $postComments = $comments->where('post_id', '=', $post->id);
+
         return view('comment.index', [
-            'post' => $post
+            'post' => $post,
+            'comments' => $postComments
         ]);
     }
 
