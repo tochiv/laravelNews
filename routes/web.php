@@ -30,3 +30,5 @@ Route::get('/admin/{id}/approve', [\App\Http\Controllers\Admin\AdminController::
 Route::get('/admin/{id}/disapprove', [\App\Http\Controllers\Admin\AdminController::class, 'disapprove'])->name('admin.disapprove');
 
 Route::delete('/admin/{id}/destroy', [\App\Http\Controllers\Admin\AdminController::class, 'destroy'])->name('admin.destroy');
+
+Route::get('/post/{id}/comment', [\App\Http\Controllers\Comment\CommentController::class, 'index'])->name('comment');

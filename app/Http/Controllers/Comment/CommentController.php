@@ -7,9 +7,10 @@ use App\Models\Post;
 
 class CommentController extends Controller
 {
-    public function index(Post $post)
+    public function index(int $post)
     {
-        $post = Post::find($post);
+        $post = Post::query()
+        ->find($post);
 
         return view('comment.index', [
             'post' => $post

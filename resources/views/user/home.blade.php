@@ -18,6 +18,7 @@
                                 <button style="width: 6rem; " class="btn btn-outline-danger m-lg-3" href="">Delete</button>
                             </form>
                         @endif
+                        <a class="btn btn-link" href="{{ route('comment', $post) }}">Comment</a>
                     </div>
                 @endif
             @endforeach
