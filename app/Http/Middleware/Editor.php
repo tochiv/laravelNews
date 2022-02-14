@@ -24,6 +24,6 @@ class Editor
         if ($user['role_id'] == 2) {
             return $next($request);
         }
-        return redirect()->route('home');
+        return to_route('home');
     }
 }

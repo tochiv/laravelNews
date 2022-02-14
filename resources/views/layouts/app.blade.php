@@ -67,9 +67,10 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                    @if(Auth::user()->role_id == 3)
+
+                                    @if(Auth::user()->getOriginal()['role_id'] == 3)
                                         <a class="dropdown-item" href="{{ route('admin') }}">Admin</a>
-                                    @elseif(Auth::user()->role_id == 2)
+                                    @elseif(Auth::user()->getOriginal()['role_id'] == 2)
                                         <a class="dropdown-item" href="{{ route('editor.index') }}">Editor</a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('home') }}">Home</a>
@@ -80,7 +81,6 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>

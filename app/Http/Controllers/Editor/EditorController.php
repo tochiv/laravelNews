@@ -59,7 +59,7 @@ class EditorController extends Controller
             'approve' => 0
         ]);
 
-        return redirect()->route('editor.index');
+        return to_route('editor.index');
     }
 
     /**
@@ -70,7 +70,8 @@ class EditorController extends Controller
      */
     public function edit(int $id)
     {
-        $post = Post::find($id);
+        $post = Post::query()
+            ->find($id);
         $user = Auth::user();
 
         return view('editor.form', [
@@ -88,14 +89,15 @@ class EditorController extends Controller
      */
     public function update(Request $request, int $id)
     {
-        $post = Post::find($id);
+        $post = Post::query()
+            ->find($id);
 
         $post->update([
             'title' => $request->title,
             'text' => $request->text
         ]);
 
-        return redirect()->route('editor.index');
+        return to_route('editor.index');
     }
 
     /**
@@ -106,21 +108,23 @@ class EditorController extends Controller
      */
     public function destroy(int $id)
     {
-        $post = Post::find($id);
+        $post = Post::query()
+            ->find($id);
 
         $post->delete();
 
-        return redirect()->route('editor.index');
+        return to_route('editor.index');
     }
 
     public function approve(int $id)
     {
-        $post = Post::find($id);
+        $post = Post::query()
+            ->find($id);
 
         $post->update([
             'approve' => 1
         ]);
 
-        return redirect()->route('editor.index');
+        return to_route('editor.index');
     }
 }

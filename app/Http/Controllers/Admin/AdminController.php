@@ -30,32 +30,35 @@ class AdminController extends Controller
 
     public function approve(int $id)
     {
-        $post = Post::find($id);
+        $post = Post::query()
+            ->find($id);
 
         $post->update([
             'approve' => 2
         ]);
 
-        return redirect()->route('admin');
+        return to_route('admin');
     }
 
     public function disapprove(int $id)
     {
-        $post = Post::find($id);
+        $post = Post::query()
+            ->find($id);
 
         $post->update([
             'approve' => 0
         ]);
 
-        return redirect()->route('admin');
+        return to_route('admin');
     }
 
     public function destroy(int $id)
     {
-        $post = Post::find($id);
+        $post = Post::query()
+            ->find($id);
 
         $post->delete();
 
-        return redirect()->route('home');
+        return to_route('home');
     }
 }

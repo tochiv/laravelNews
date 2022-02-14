@@ -23,6 +23,6 @@ class Admin
             return $next($request);
         }
 
-        return redirect()->route('home');
+        return to_route('home');
     }
 }
