@@ -15,6 +15,7 @@
 
         <form method="POST" action="{{ route('comment.create', $post) }}">
             @csrf
+            @method('POST')
             <div class="mb-3">
                 <label class="form-label">Comment</label>
                 <textarea name="text" class="form-control" rows="3">
@@ -32,7 +33,9 @@
             </div>
             <div class="card-body">
                 <p class="card-text">{{ $comment->text }}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                @if(Auth::user() == $comment->user)
+                    <a href="{{ route('comment.edit', $comment) }}" class="btn btn-primary">Edit</a>
+                @endif
             </div>
         </div>
         @endforeach

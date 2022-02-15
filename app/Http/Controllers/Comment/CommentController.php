@@ -11,6 +11,11 @@ use Illuminate\Http\RedirectResponse;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(int $post)
     {
         $post = Post::query()
@@ -45,5 +50,27 @@ class CommentController extends Controller
             ]);
 
         return to_route('comment', $post);
+    }
+
+    public function edit(int $id)
+    {
+        $comment = Comment::query()
+            ->find($id);
+
+        return view('comment.edit', $comment, [
+            'comment' => $comment
+        ]);
+    }
+
+    public function update(Request $request, int $id)
+    {
+        $comment = Comment::query()
+            ->find($id);
+
+        $comment->update([
+                'text' => $request->text
+            ]);
+
+        return to_route('comment', $comment->post_id);
     }
 }

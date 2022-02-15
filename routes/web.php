@@ -34,6 +34,8 @@ Route::controller(\App\Http\Controllers\Admin\AdminController::class)->group(fun
 Route::controller(\App\Http\Controllers\Comment\CommentController::class)->group(function (){
     Route::post('/post/{id}/comment', 'index')->name('comment');
     Route::post('/post/{id}/comment/create', 'comment')->name('comment.create');
+    Route::post('/comment/edit/{id}' ,'edit')->name('comment.edit');
+    Route::put('/comment/update/{id}', 'update')->name('comment.update');
 });
 
 
