@@ -58,6 +58,13 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @if(Auth::user()->getOriginal()['role_id'] == 3)
+                                        <a class="dropdown-item" href="{{ route('admin') }}">Admin</a>
+                                    @elseif(Auth::user()->getOriginal()['role_id'] == 2)
+                                        <a class="dropdown-item" href="{{ route('editor.index') }}">Editor</a>
+                                    @endif
+                                    <a class="dropdown-item" href="{{ route('profile') }}">Profile</a>
+                                    <a class="dropdown-item" href="{{ route('home') }}">Home</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -68,12 +75,7 @@
                                         @csrf
                                     </form>
 
-                                    @if(Auth::user()->getOriginal()['role_id'] == 3)
-                                        <a class="dropdown-item" href="{{ route('admin') }}">Admin</a>
-                                    @elseif(Auth::user()->getOriginal()['role_id'] == 2)
-                                        <a class="dropdown-item" href="{{ route('editor.index') }}">Editor</a>
-                                    @endif
-                                    <a class="dropdown-item" href="{{ route('home') }}">Home</a>
+
                                 </div>
                             </li>
                         @endguest
