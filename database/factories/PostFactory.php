@@ -23,7 +23,7 @@ class PostFactory extends Factory
             'title' => $this->faker->title,
             'text' => $this->faker->text,
             'publication_date' => now(),
-            'user_id' => 1
+            'user_id' => $this->faker->randomNumber()
         ];
     }
 }

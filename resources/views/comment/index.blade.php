@@ -39,5 +39,8 @@
             </div>
         </div>
         @endforeach
+        <div class="d-flex justify-content-center">
+            {{ $comments->links() }}
+        </div>
     </div>
 @endsection

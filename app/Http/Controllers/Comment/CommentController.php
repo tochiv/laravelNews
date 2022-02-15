@@ -21,13 +21,13 @@ class CommentController extends Controller
         $post = Post::query()
         ->find($post);
 
-        $comments = Comment::all();
-
-        $postComments = $comments->where('post_id', '=', $post->id);
+        $comments = Comment::query()
+            ->where('post_id', '=', $post->id)
+            ->paginate(5);
 
         return view('comment.index', [
             'post' => $post,
-            'comments' => $postComments
+            'comments' => $comments
         ]);
     }
 

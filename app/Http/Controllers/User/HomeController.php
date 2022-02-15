@@ -25,8 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::query()
+        ->where('approve', '=', 2)
+        ->paginate(2);
 
-        return view('user.home', compact('posts'));
+        return view('user.home',[
+            'posts' => $posts
+        ]);
     }
 }

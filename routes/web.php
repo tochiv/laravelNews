@@ -37,7 +37,3 @@ Route::controller(\App\Http\Controllers\Comment\CommentController::class)->group
     Route::post('/comment/edit/{id}' ,'edit')->name('comment.edit');
     Route::put('/comment/update/{id}', 'update')->name('comment.update');
 });
-
-
-
-
