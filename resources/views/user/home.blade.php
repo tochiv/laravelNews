@@ -10,7 +10,7 @@
                             <h5 class="card-title">{{$post->title}}</h5>
                             <p class="card-text">{{$post->text}}</p>
                         </div>
-                        @if(Auth::user()->getOriginal()['role_id'] == 3)
+                        @if($user['role_id'] == 3)
                             <form action="{{ route('admin.destroy', $post) }}" method="POST">
                                 @method('DELETE')
                                 @csrf

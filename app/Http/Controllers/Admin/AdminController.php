@@ -21,7 +21,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::query()
+            ->where('approve', '=', 1)
+            ->orderByDesc('publication_date')
+            ->get();
 
         return view('admin.index', [
             'posts' => $posts
@@ -34,7 +37,8 @@ class AdminController extends Controller
             ->find($id);
 
         $post->update([
-            'approve' => 2
+            'approve' => 2,
+            'publication_date' => now()
         ]);
 
         return to_route('admin');
@@ -46,7 +50,8 @@ class AdminController extends Controller
             ->find($id);
 
         $post->update([
-            'approve' => 0
+            'approve' => 0,
+            'publication_date' => now()
         ]);
 
         return to_route('admin');

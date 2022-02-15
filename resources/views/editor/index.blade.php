@@ -4,8 +4,7 @@
     <div class="container">
         Do you want to create a new post? <a class="btn btn-success" href="{{ route('editor.create') }}">Create Post</a>
         <div class="row vertical-center-row">
-            @foreach($user->posts as $post)
-                @if($post->approve == 0)
+            @foreach($posts as $post)
                 <div class="card" style="width: 40rem; ">
                     <div class="card-body">
                         <h5 class="card-title">{{$post->title}}</h5>
@@ -19,7 +18,6 @@
                         </form>
                     </div>
                 </div>
-                @endif
             @endforeach
         </div>
     </div>

@@ -28,8 +28,14 @@ class EditorController extends Controller
     {
         $user = Auth::user();
 
+        $posts = Post::query()
+            ->where('user_id', '=', $user['id'])
+            ->where('approve', '=', 0)
+            ->orderByDesc('publication_date')
+            ->get();
+
         return view('editor.index', [
-            'user' => $user
+            'posts' => $posts
         ]);
     }
 

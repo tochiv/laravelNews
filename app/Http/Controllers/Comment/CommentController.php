@@ -23,6 +23,7 @@ class CommentController extends Controller
 
         $comments = Comment::query()
             ->where('post_id', '=', $post->id)
+            ->orderByDesc('publication_date')
             ->paginate(5);
 
         return view('comment.index', [
