@@ -57,6 +57,11 @@ class EditorController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'title' => 'required',
+            'text' => 'required'
+        ]);
+
         Post::create([
             'title' => $request['title'],
             'text' => $request['text'],
@@ -97,6 +102,11 @@ class EditorController extends Controller
     {
         $post = Post::query()
             ->find($id);
+
+        $this->validate($request, [
+            'title' => 'required',
+            'text' => 'required'
+        ]);
 
         $post->update([
             'title' => $request->title,

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Comment;
 use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use App\Models\Post;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 
@@ -42,6 +41,10 @@ class CommentController extends Controller
         $post = Post::query()
             ->find($post);
 
+        $this->validate($request, [
+            'text' => 'required'
+        ]);
+
         Comment::query()
             ->create([
                 'text' => $request['text'],
@@ -67,6 +70,10 @@ class CommentController extends Controller
     {
         $comment = Comment::query()
             ->find($id);
+
+        $this->validate($request, [
+            'text' => 'required'
+        ]);
 
         $comment->update([
                 'text' => $request->text

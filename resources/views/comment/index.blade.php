@@ -18,7 +18,7 @@
             @method('POST')
             <div class="mb-3">
                 <label class="form-label">Comment</label>
-                <textarea name="text" class="form-control" rows="3">
+                <textarea name="text" class="form-control" rows="3" required>
             </textarea>
             </div>
             <button class="btn btn-success">

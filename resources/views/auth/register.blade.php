@@ -14,7 +14,7 @@
                             <div class="row mb-3">
                                 <div class="mb-3">
                                     <label class="form-label ">Avatar</label>
-                                    <input class="form-control" type="file" name="avatar">
+                                    <input class="form-control" type="file" required name="avatar">
                                 </div>
                                 <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
 

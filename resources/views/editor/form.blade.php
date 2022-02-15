@@ -16,11 +16,11 @@
             <div class="mb-3">
                 <label class="form-label">Title</label>
                 <input value="{{ isset($post) ? $post->title : null }}"
-                       name="title" type="text" class="form-control"  placeholder="Title">
+                       name="title" type="text" class="form-control"  placeholder="Title" required>
             </div>
             <div class="mb-3">
                 <label class="form-label">Text</label>
-                <textarea name="text" class="form-control" rows="3">
+                <textarea name="text" class="form-control" rows="3" required>
                     {{ isset($post) ? $post->text : null }}
                 </textarea>
             </div>

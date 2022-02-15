@@ -7,7 +7,7 @@
             @method('PUT')
             <div class="mb-3">
                 <label class="form-label">Edit</label>
-                <textarea name="text" class="form-control" rows="3">
+                <textarea name="text" class="form-control" rows="3" required>
                     {{ $comment->text }}
             </textarea>
             </div>
