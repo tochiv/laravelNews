@@ -20,11 +20,8 @@
             </div>
             <div class="mb-3">
                 <label class="form-label">Text</label>
-                <textarea name="text" class="form-control" rows="3" required>
-                    {{ isset($post) ? $post->text : null }}
-                </textarea>
+                <textarea name="text" class="form-control" rows="3" required>{{ isset($post) ? $post->text : null }}</textarea>
             </div>
-
             <button class="btn btn-success">
                 {{isset($post) ? 'Edit' : 'Create'}}
             </button>

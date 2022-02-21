@@ -18,12 +18,11 @@
             @method('POST')
             <div class="mb-3">
                 <label class="form-label">Comment</label>
-                <textarea name="text" class="form-control" rows="3" required>
-            </textarea>
+                <textarea name="text" class="form-control" rows="3" required></textarea>
+                <button class="btn btn-success mt-3">
+                    Comment
+                </button>
             </div>
-            <button class="btn btn-success">
-                Comment
-            </button>
         </form>
 
         @foreach($comments as $comment)
